@@ -1,51 +1,109 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aminata Cissoko — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:     '#121212',
+            card:   '#1e1e1e',
+            header: '#0d0d0d',
+            accent: '#4fc3f7',
+            green:  '#81c784',
+            muted:  '#a0a0a0',
+            border: '#2a2a2a',
+          },
+          transitionProperty: {
+            'fade': 'opacity, transform',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* transition pour le fade-in JS */
+    .fade-in {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+  </style>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="bg-bg text-gray-200 font-sans leading-relaxed">
 
   <!-- ========== HEADER / HERO ========== -->
-  <header>
-    <div class="hero">
-      <h1>Aminata Cissoko</h1>
-      <p class="tagline">Étudiante en Mathématiques Appliquées à la Cybersécurité</p>
-      <nav>
-        <a href="#apropos">À propos</a>
-        <a href="#competences">Compétences</a>
-        <a href="#projets">Projets</a>
-        <a href="#langues">Langues</a>
-        <a href="#contact">Contact</a>
+  <header class="bg-header border-b border-border sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+      <!-- Identité + tagline -->
+      <div>
+        <h1 class="text-2xl font-bold text-accent leading-tight">Aminata Cissoko</h1>
+        <p class="text-muted text-sm">Étudiante en Mathématiques Appliquées à la Cybersécurité</p>
+      </div>
+
+      <!-- Nav desktop -->
+      <nav class="hidden sm:flex flex-wrap gap-5">
+        <a href="#apropos"     class="nav-link text-muted hover:text-accent transition-colors text-sm">À propos</a>
+        <a href="#competences" class="nav-link text-muted hover:text-accent transition-colors text-sm">Compétences</a>
+        <a href="#projets"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Projets</a>
+        <a href="#langues"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Langues</a>
+        <a href="#contact"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Contact</a>
       </nav>
+
+      <!-- Bouton hamburger (mobile) -->
+      <button id="hamburger"
+              aria-label="Ouvrir le menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="sm:hidden self-end text-muted hover:text-accent transition-colors">
+        <!-- icône 3 barres -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Menu mobile déroulant -->
+    <div id="mobile-menu" class="hidden sm:hidden bg-header border-t border-border px-6 py-4 flex flex-col gap-3">
+      <a href="#apropos"     class="nav-link text-muted hover:text-accent transition-colors text-sm">À propos</a>
+      <a href="#competences" class="nav-link text-muted hover:text-accent transition-colors text-sm">Compétences</a>
+      <a href="#projets"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Projets</a>
+      <a href="#langues"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Langues</a>
+      <a href="#contact"     class="nav-link text-muted hover:text-accent transition-colors text-sm">Contact</a>
     </div>
   </header>
 
-  <main>
+  <main class="max-w-4xl mx-auto px-6">
 
     <!-- ========== À PROPOS ========== -->
-    <section id="apropos">
-      <h2>À propos de moi</h2>
-      <p>
+    <section id="apropos" class="py-12 border-b border-border fade-in opacity-0 translate-y-6">
+      <h2 class="text-2xl font-semibold text-accent mb-4">À propos de moi</h2>
+      <p class="text-gray-300 mb-6">
         Je suis Aminata Cissoko, étudiante en mathématiques appliquées à la cybersécurité.
         Passionnée par les infrastructures DevOps, la sécurité des systèmes et le développement web,
         je construis des projets qui combinent ces domaines de bout en bout.
       </p>
-      <a class="btn" href="https://github.com/aminatacissoko" target="_blank" rel="noopener">
+      <a href="https://github.com/aminatacissoko" target="_blank" rel="noopener"
+         class="inline-block border border-green text-green px-5 py-2 rounded hover:bg-green hover:text-bg transition-colors text-sm">
         Voir mon GitHub
       </a>
     </section>
 
     <!-- ========== COMPÉTENCES ========== -->
-    <section id="competences">
-      <h2>Compétences</h2>
+    <section id="competences" class="py-12 border-b border-border fade-in opacity-0 translate-y-6">
+      <h2 class="text-2xl font-semibold text-accent mb-6">Compétences</h2>
 
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3>DevOps & Cloud</h3>
-          <ul>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+        <div class="bg-card border border-border rounded-lg p-5">
+          <h3 class="text-green font-semibold mb-3">DevOps &amp; Cloud</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
             <li>Docker &amp; Docker Compose</li>
             <li>Kubernetes (Minikube)</li>
             <li>Jenkins (CI/CD)</li>
@@ -54,9 +112,9 @@
           </ul>
         </div>
 
-        <div class="skill-category">
-          <h3>Cybersécurité</h3>
-          <ul>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <h3 class="text-green font-semibold mb-3">Cybersécurité</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
             <li>Réseaux (CCNA)</li>
             <li>Sécurité des systèmes et réseaux</li>
             <li>Pentesting (TryHackMe, HackTheBox)</li>
@@ -64,130 +122,139 @@
           </ul>
         </div>
 
-        <div class="skill-category">
-          <h3>Développement</h3>
-          <ul>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <h3 class="text-green font-semibold mb-3">Développement</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
             <li>HTML / CSS</li>
             <li>JavaScript</li>
             <li>React</li>
             <li>Express.js / MongoDB</li>
           </ul>
         </div>
+
       </div>
     </section>
 
     <!-- ========== PROJETS ========== -->
-    <section id="projets">
-      <h2>Projets</h2>
+    <section id="projets" class="py-12 border-b border-border fade-in opacity-0 translate-y-6">
+      <h2 class="text-2xl font-semibold text-accent mb-6">Projets</h2>
 
-      <h3>Cybersécurité</h3>
-      <div class="projects-grid">
+      <!-- Cybersécurité -->
+      <h3 class="text-green font-semibold text-lg mb-4">Cybersécurité</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
 
-        <article class="project-card">
-          <h4>Plateforme d'audit de sécurité</h4>
-          <p>Projet de mémoire consacré à l'audit de systèmes, fichiers et applications web selon les référentiels ISO 27001, NIST et RGPD, avec des outils comme Nmap, OpenVAS et Wireshark.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Plateforme d'audit de sécurité</h4>
+          <p class="text-muted text-sm">Projet de mémoire consacré à l'audit de systèmes, fichiers et applications web selon les référentiels ISO 27001, NIST et RGPD, avec des outils comme Nmap, OpenVAS et Wireshark.</p>
         </article>
 
-        <article class="project-card">
-          <h4>Projet SIEM avec Wazuh</h4>
-          <p>Mise en place d'un environnement de supervision pour collecter et analyser les logs, surveiller les événements de sécurité et détecter les alertes et vulnérabilités.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Projet SIEM avec Wazuh</h4>
+          <p class="text-muted text-sm">Mise en place d'un environnement de supervision pour collecter et analyser les logs, surveiller les événements de sécurité et détecter les alertes et vulnérabilités.</p>
         </article>
 
-        <article class="project-card">
-          <h4>Analyse de vulnérabilités avec OpenVAS et Grafana</h4>
-          <p>Environnement de test pour analyser les vulnérabilités d'un système et visualiser les résultats des scans à l'aide d'OpenVAS et Grafana.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Analyse de vulnérabilités avec OpenVAS et Grafana</h4>
+          <p class="text-muted text-sm">Environnement de test pour analyser les vulnérabilités d'un système et visualiser les résultats des scans à l'aide d'OpenVAS et Grafana.</p>
         </article>
 
-        <article class="project-card">
-          <h4>Script de monitoring</h4>
-          <p>Script Python permettant de surveiller les services Apache, MySQL et SSH, d'analyser les logs et de générer des alertes en cas de problème.</p>
-        </article>
-
-      </div>
-
-      <h3>Développement</h3>
-      <div class="projects-grid">
-
-        <article class="project-card">
-          <h4>Système de gestion scolaire</h4>
-          <p>Application de gestion des informations des étudiants, enseignants et administrateurs, avec génération de bulletins scolaires au format PDF.</p>
-        </article>
-
-        <article class="project-card">
-          <h4>Portfolio web</h4>
-          <p>Développement progressif d'un portfolio personnel avec une interface web et un backend permettant de gérer les projets et les données du formulaire de contact.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Script de monitoring</h4>
+          <p class="text-muted text-sm">Script Python permettant de surveiller les services Apache, MySQL et SSH, d'analyser les logs et de générer des alertes en cas de problème.</p>
         </article>
 
       </div>
 
-      <h3>DevOps &amp; Cloud</h3>
-      <div class="projects-grid">
+      <!-- Développement -->
+      <h3 class="text-green font-semibold text-lg mb-4">Développement</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
 
-        <article class="project-card">
-          <h4>Projet Cloud &amp; DevOps</h4>
-          <p>Environnement DevOps intégrant Docker, Jenkins, Terraform, Prometheus et Grafana afin d'automatiser le développement, le déploiement et la supervision des applications.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Système de gestion scolaire</h4>
+          <p class="text-muted text-sm">Application de gestion des informations des étudiants, enseignants et administrateurs, avec génération de bulletins scolaires au format PDF.</p>
         </article>
 
-        <article class="project-card">
-          <h4>Infrastructure AWS avec Terraform</h4>
-          <p>Automatisation du déploiement d'une infrastructure AWS avec Terraform pour provisionner les ressources nécessaires à un environnement Cloud et DevOps.</p>
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Portfolio web</h4>
+          <p class="text-muted text-sm">Développement progressif d'un portfolio personnel avec une interface web et un backend permettant de gérer les projets et les données du formulaire de contact.</p>
         </article>
 
-        <article class="project-card">
-          <h4>Pipeline CI/CD avec Jenkins</h4>
-          <p>Pipeline CI/CD pour automatiser l'intégration, l'analyse du code, la création d'images Docker et le déploiement sur plusieurs machines virtuelles.</p>
+      </div>
+
+      <!-- DevOps & Cloud -->
+      <h3 class="text-green font-semibold text-lg mb-4">DevOps &amp; Cloud</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Projet Cloud &amp; DevOps</h4>
+          <p class="text-muted text-sm">Environnement DevOps intégrant Docker, Jenkins, Terraform, Prometheus et Grafana afin d'automatiser le développement, le déploiement et la supervision des applications.</p>
+        </article>
+
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Infrastructure AWS avec Terraform</h4>
+          <p class="text-muted text-sm">Automatisation du déploiement d'une infrastructure AWS avec Terraform pour provisionner les ressources nécessaires à un environnement Cloud et DevOps.</p>
+        </article>
+
+        <article class="bg-card border border-border rounded-lg p-5 hover:border-accent transition-colors">
+          <h4 class="text-accent font-semibold mb-2">Pipeline CI/CD avec Jenkins</h4>
+          <p class="text-muted text-sm">Pipeline CI/CD pour automatiser l'intégration, l'analyse du code, la création d'images Docker et le déploiement sur plusieurs machines virtuelles.</p>
         </article>
 
       </div>
     </section>
 
     <!-- ========== LANGUES ========== -->
-    <section id="langues">
-      <h2>Langues</h2>
-      <ul class="langues-list">
-        <li><span class="lang">Français</span> — courant</li>
-        <li><span class="lang">Wolof</span> — langue maternelle</li>
-        <li><span class="lang">Anglais</span> — technique / professionnel</li>
+    <section id="langues" class="py-12 border-b border-border fade-in opacity-0 translate-y-6">
+      <h2 class="text-2xl font-semibold text-accent mb-6">Langues</h2>
+      <ul class="space-y-2">
+        <li><span class="text-accent font-semibold">Français</span> <span class="text-muted">— courant</span></li>
+        <li><span class="text-accent font-semibold">Wolof</span> <span class="text-muted">— langue maternelle</span></li>
+        <li><span class="text-accent font-semibold">Anglais</span> <span class="text-muted">— technique / professionnel</span></li>
       </ul>
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Email</span>
-          <a href="mailto:aminataci20@gmail.com">aminataci20@gmail.com</a>
+    <section id="contact" class="py-12 fade-in opacity-0 translate-y-6">
+      <h2 class="text-2xl font-semibold text-accent mb-6">Contact</h2>
+      <ul class="space-y-3">
+
+        <li class="flex items-baseline gap-4">
+          <span class="text-muted text-xs uppercase tracking-wider w-28">Email</span>
+          <a href="mailto:aminataci20@gmail.com" class="text-green hover:underline">aminataci20@gmail.com</a>
         </li>
-        <li>
-          <span class="contact-label">Téléphone</span>
-          <a href="tel:+221776085881">+221 77 608 58 81</a>
+
+        <li class="flex items-baseline gap-4">
+          <span class="text-muted text-xs uppercase tracking-wider w-28">Téléphone</span>
+          <a href="tel:+221776085881" class="text-green hover:underline">+221 77 608 58 81</a>
         </li>
-        <li>
-          <span class="contact-label">Localisation</span>
-          <span>Parcelles Assainies, Dakar — Sénégal</span>
+
+        <li class="flex items-baseline gap-4">
+          <span class="text-muted text-xs uppercase tracking-wider w-28">Localisation</span>
+          <span class="text-gray-300">Parcelles Assainies, Dakar — Sénégal</span>
         </li>
-        <li>
-          <span class="contact-label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/aminata-cissokho-5182861a9/" target="_blank" rel="noopener">
-            linkedin.com/in/aminata-cissokho
-          </a>
+
+        <li class="flex items-baseline gap-4">
+          <span class="text-muted text-xs uppercase tracking-wider w-28">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/aminata-cissokho-5182861a9/" target="_blank" rel="noopener"
+             class="text-green hover:underline">linkedin.com/in/aminata-cissokho</a>
         </li>
-        <li>
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/aminatacissoko" target="_blank" rel="noopener">
-            github.com/aminatacissoko
-          </a>
+
+        <li class="flex items-baseline gap-4">
+          <span class="text-muted text-xs uppercase tracking-wider w-28">GitHub</span>
+          <a href="https://github.com/aminatacissoko" target="_blank" rel="noopener"
+             class="text-green hover:underline">github.com/aminatacissoko</a>
         </li>
+
       </ul>
     </section>
 
   </main>
 
   <!-- ========== FOOTER ========== -->
-  <footer>
-    <p>© 2026 Aminata Cissoko — Fait avec HTML &amp; CSS</p>
+  <footer class="bg-header border-t border-border text-center py-6">
+    <p class="text-muted text-sm">© 2026 Aminata Cissoko — Fait avec HTML, Tailwind CSS &amp; JavaScript</p>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
