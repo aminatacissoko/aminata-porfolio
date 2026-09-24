@@ -17,3 +17,29 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
 }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.contact-label {
+  min-width: 110px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
